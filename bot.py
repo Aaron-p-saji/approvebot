@@ -40,7 +40,7 @@ TEXT = environ.get("APPROVED_WELCOME_TEXT", "Hello {mention}\nWelcome To {title}
 APPROVED = environ.get("APPROVED_WELCOME", "on").lower()
 
 @pr0fess0r_99.on_message(filters.private & filters.command(["start"]))
-async def start(client: pr0fess0r_99, message: Message, query: CallbackQuery):
+async def start(client: pr0fess0r_99, message: Message):
     approvedbot = await client.get_me() 
     button = [[ InlineKeyboardButton("👑 Owner 👑", url="https://t.me/rubyMathews_bot")]]
     await client.send_message(chat_id=message.chat.id, text=f"You Are Not Allowed To Use It Please Contact [Owner](https://t.me/rubyMathews_bot) for support", reply_markup=InlineKeyboardMarkup(button), disable_web_page_preview=True)
