@@ -10,7 +10,7 @@ pr0fess0r_99=Client(
 )
 
 CHAT_ID = [int(pr0fess0r_99) for pr0fess0r_99 in environ.get("CHAT_ID", None).split()]
-TEXT = environ.get("APPROVED_WELCOME_TEXT", " {mention}-{joinid} Joined {title}")
+TEXT = environ.get(" {mention}-{joinid} Joined {title}", " {mention}-{joinid} Joined {title}")
 APPROVED = environ.get("APPROVED_WELCOME", "on").lower()
 
 @pr0fess0r_99.on_message(filters.private & filters.command(["start"]))
