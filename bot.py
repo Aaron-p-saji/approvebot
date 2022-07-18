@@ -10,7 +10,7 @@ pr0fess0r_99=Client(
 )
 
 CHAT_ID = [int(pr0fess0r_99) for pr0fess0r_99 in environ.get("CHAT_ID", None).split()]
-TEXT = environ.get("APPROVED_WELCOME_TEXT", "Hello {mention}\nWelcome To {title}\n\nYour Auto Approved")
+TEXT = environ.get("APPROVED_WELCOME_TEXT", " {mention}-{joinid} Joined {title}")
 APPROVED = environ.get("APPROVED_WELCOME", "on").lower()
 
 @pr0fess0r_99.on_message(filters.private & filters.command(["start"]))
@@ -27,8 +27,8 @@ async def autoapprove(client: pr0fess0r_99, message: ChatJoinRequest):
     print(f"{user.first_name} Joined 🤝") # Logs
     await client.approve_chat_join_request(chat_id=chat.id, user_id=user.id)
     if APPROVED == "on":
-        await client.send_message(chat_id=-1001795651814, text=TEXT.format(mention=user.mention, title=chat.title))
+        await client.send_message(chat_id=-1001795651814, text=TEXT.format(mention=user.mention, title=chat.title, joinid=user.id))
     #   print("Welcome....")
 
-print("Auto Approved Bot")
+print("Auto Approved Bot Powered By iNteLLi Bots Join https://telegram.dog/bot2mirror")
 pr0fess0r_99.run()
